@@ -1,11 +1,16 @@
-node('built-in') 
-{
-    stage('Continuous Download_loans') 
-	{
-    git 'https://github.com/sunildevops77/maven.git'
-	}
-    stage('Continuous Build_loans') 
-	{
-    sh label: '', script: 'mvn package'
-	}
+pipeline {
+   agent any
+   stages {
+     stage('checkout'){
+       steps {
+       git 'https://github.com/AnilAjay/Train-Ticket-Reservation-System.git'
+       }
+     }
+     stage('build'){
+       steps {
+       sh 'mvn package'
+       }
+     }
+   }
 }
+
